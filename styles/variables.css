@@ -2,3 +2,20 @@
   Переменные для вашего проекта
   и их переопределение под различные устройства
 */
+:root {
+  --bg-color: #000028;
+  --text-color: #f1b2ce;
+  --title-color: #db00ff;
+  --header-text-color: #000028;
+  --font-size: 18px;
+  --accent-color: #ff0070;
+  --title-shadow: #ff0070;
+  --menu-color: #ff0070;
+  --ind: clamp(10px, 2.6041vw, 20px); /*отступ*/
+  --visibility: visible;
+  --background-image: image-set(
+    url(../images/cover-image-dark.png) 1x,
+    url(../images/cover-image.png) 2x);
+}
+
+
