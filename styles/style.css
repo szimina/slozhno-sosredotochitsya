@@ -3,11 +3,6 @@
 .page {
   /* сохраните в разметке и стилях класс page. На его основе работает скрипт. */
   background-color: var(--bg-color);
-  background-image: var(--background-image);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  background-attachment: fixed;
 }
 
 .header {
@@ -21,6 +16,11 @@
   width: 100%;
   height: 100vh;
   padding: var(--ind);
+  background-image: var(--background-image);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .decorated-zone::before {
@@ -49,7 +49,7 @@
   inset-inline-start: var(--ind);
   inset-block-end: var(--ind);
 }
-.header__theme-menu {
+.header__theme_menu {
   display: flex;
   grid-area: menu;
   justify-content: center;
@@ -66,6 +66,7 @@
   font-weight: 400;
   font-size: var(--font-size);
   line-height: 25px;
+  text-transform: uppercase;
   inset-block-start: var(--ind);
   inset-inline-end: calc(var(--ind) + 3px + 25px);
 }
@@ -87,7 +88,7 @@
   inset-block-start: 9px;
 }
 
-.header__theme-menu-list {
+.header__theme_menu-list {
   display: flex;
   gap: 10px;
   margin: 0;
@@ -95,7 +96,7 @@
   list-style: none;
 }
 
-.header__theme-menu-button {
+.header__theme_menu-button {
   width: 70px;
   height: 26px;
   border: transparent;
@@ -108,18 +109,19 @@
   text-align: center;
   text-transform: lowercase;
   background-color: transparent;
+  cursor: pointer;
 }
 
-.header__theme-menu-button:hover {
+.header__theme_menu-button:hover {
   outline: 1px solid var(--menu-color);
 }
 
-.header__theme-menu-button:focus-visible {
+.header__theme_menu-button:focus-visible {
   border-bottom: 1px solid var(--menu-color);
-  outline-color: transparent;
+  outline: none;
 }
 
-.header__theme-menu-button_active {
+.header__theme_menu-button_active {
   outline: 1px solid var(--menu-color);
   pointer-events: none;
 }
@@ -156,21 +158,19 @@
   padding-inline-start: var(--ind);
   padding-inline-end: var(--ind);
 }
-.main__why {
+
+.section {
   display: grid;
+  gap: 20px;
+}
+
+.section_theme-why {
   grid-template-columns: 30.7vw 1fr;
   grid-template-rows: repeat(2, min-content);
-  gap: 20px;
   padding-block-start: clamp(40px, 7.81vw, 60px);
 }
 
-div {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.main__h2 {
+.section__header {
   color: var(--menu-color);
   font-family: inherit;
   font-weight: 700;
@@ -178,12 +178,18 @@ div {
   line-height: 130%;
 }
 
-.main__h2_why {
+.section__header_theme-why {
   grid-row-start: 1;
   grid-row-end: 3;
 }
 
-.main__h3 {
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.content__subtitle {
   display: inline-block;
   color: var(--header-text-color);
   font-family: inherit;
@@ -193,7 +199,7 @@ div {
   background-color: var(--accent-color);
 }
 
-.main__text {
+.content__text {
   color: var(--text-color);
   font-family: inherit;
   font-weight: 400;
@@ -201,48 +207,48 @@ div {
   line-height: 130%;
 }
 
-.main__text_link {
-  text-shadow: 2px 2px 0px var(--accent-color);
+.content__text-link {
   text-decoration: none;
+  text-shadow: 2px 2px 0px var(--accent-color);
   cursor: pointer;
 }
 
-.main__what {
-  display: grid;
+.content__text-link:hover {
+  border-block-end: 1px solid var(--text-color);
+}
+
+.content__text-link:focus-visible {
+  border: 1px solid var(--text-color);
+}
+
+.section_theme-what {
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, min-content);
-  gap: 20px;
   padding-block-start: clamp(50px, 10.41vw, 80px);
 }
 
-.main__h2_what {
+.section__header_theme-what {
   grid-column-start: 1;
   grid-column-end: 4;
   max-width: calc((100% - var(--ind)) / 3);
 }
 
-.main__how {
-  display: grid;
+.section_theme-how {
   grid-template-columns: 30.7vw 1fr;
   grid-template-rows: repeat(6, min-content);
-  gap: 20px;
   padding-block-start: clamp(50px, 10.41vw, 80px);
 }
 
-.main__h2_how {
+.section__header_theme-how {
   grid-row-start: 1;
   grid-row-end: 7;
 }
 
-.main__h3_normal {
+.content__subtitle_normal {
   font-weight: 400;
 }
 
-.main__h3_extra-margin {
-  margin-block-start: 10px;
-}
-
-.main__images {
+.images {
   display: grid;
   grid-template-columns: repeat(3, auto);
   grid-template-rows: repeat(4, auto);
@@ -256,10 +262,18 @@ div {
   padding-block-end: clamp(40px, 7.81vw, 60px);
 }
 
-.main__images_title {
+.images__title {
+  display: inline-block;
   grid-area: title;
+  color: var(--header-text-color);
+  font-family: inherit;
+  font-weight: 700;
+  font-size: var(--font-size);
+  line-height: 130%;
+  background-color: var(--accent-color);
 }
-.main__images_image {
+
+.images__image {
   display: block;
   width: 100%;
   height: 100%;
@@ -267,23 +281,23 @@ div {
   object-position: center;
 }
 
-.main__images_sunset {
+.images__image_sunset {
   grid-area: sunset;
 }
 
-.main__images_icecream {
+.images__image_icecream {
   grid-area: icecream;
 }
 
-.main__images_tape {
+.images__image_tape {
   grid-area: tape;
 }
 
-.main__images_books {
+.images__image_books {
   grid-area: books;
 }
 
-.main__images_street {
+.images__image_street {
   grid-area: street;
 }
 
@@ -307,7 +321,7 @@ div {
     font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
   }
 
-  .main__images {
+  .images {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(6, min-content);
     grid-template-areas:
@@ -321,22 +335,22 @@ div {
 }
 
 @media (width <=583px) {
-  .main__why {
+  .section_theme-why {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(3, min-content);
   }
 
-  .main__how {
+  .section_theme-how {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(7, min-content);
   }
 
-  .main__h2_how {
+  .section__header_theme-how {
     grid-row-start: 1;
     grid-row-end: 2;
   }
 
-  .main__h2_what {
+  .section__header_theme-what {
     max-width: 100%;
   }
 
@@ -350,21 +364,21 @@ div {
 }
 
 @media (width <=768px) {
-  .header__theme-menu {
+  .header__theme_menu {
     justify-content: end;
     align-items: center;
   }
-  .header__theme-menu-list {
+  .header__theme_menu-list {
     flex-direction: column;
     gap: 13px;
   }
 
-  .main__what {
+  .section_theme-what {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(4, min-content);
   }
-  
-  .main__h2_what {
+
+  .section__header_theme-what {
     grid-column-start: 1;
     grid-column-end: 2;
   }
